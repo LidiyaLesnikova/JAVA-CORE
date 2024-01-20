@@ -9,13 +9,16 @@ import java.util.Arrays;
 public class Task1 {
     public static void main(String[] args) {
         int[] arr = new int[] {2, 1, 2, 3, 4};
-        System.out.println(countEvens(arr));
+        System.out.println(countEvens(arr)); //первый вариант
+        System.out.println(Arrays.toString(arr) + " -> " + Arrays.stream(arr).filter(i -> i%2==0).count()); //второй вариант
 
         arr = new int[] {2, 2, 0};
         System.out.println(countEvens(arr));
+        System.out.println(Arrays.toString(arr) + " -> " + Arrays.stream(arr).filter(i -> i%2==0).count());
 
         arr = new int[] {1, 3, 5};
         System.out.println(countEvens(arr));
+        System.out.println(Arrays.toString(arr) + " -> " + Arrays.stream(arr).filter(i -> i%2==0).count());
     }
 
     public static String countEvens(int[] arr) {
