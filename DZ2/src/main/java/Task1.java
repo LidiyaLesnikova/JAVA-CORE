@@ -27,4 +27,5 @@ public class Task1 {
         }
         return Arrays.toString(arr) + " -> " + sumElements;
     }
+    
 }
