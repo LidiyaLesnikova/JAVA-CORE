@@ -30,8 +30,6 @@ public class Main {
 
             Order order3 = OnlineShop.buyProduct("Petrov Petr", "pineapple", "300");
             OnlineShop.getOrderList().add(order3);
-
-
         } catch (QuantityException e) {
             OnlineShop.getOrderList().add(OnlineShop.buyProduct(e.getCustomer(), e.getProduct(), "1"));
         } catch (ProductNotExistException e) {
@@ -43,5 +41,19 @@ public class Main {
         System.out.println(OnlineShop.getOrderList());
         System.out.println(OnlineShop.getOrderList().size() + " orders received");
 
+        congratulateWithHolidays();
+    }
+
+    public static void congratulateWithHolidays() {
+        LocalDate today = LocalDate.now();
+        if (today.getDayOfMonth()==1 && today.getMonthValue()==1) {
+            OnlineShop.getCustomerList().stream().forEach(a -> System.out.println(a.getFIO()+Holidays.New_Year.getTitle()));
+        } else if (today.getDayOfMonth()==8 && today.getMonthValue()==3) {
+            OnlineShop.getCustomerList().stream().filter(a -> a.getGender()==Gender.female).forEach(a -> System.out.println(a.getFIO()+Holidays.March8.getTitle()));
+        } else if (today.getDayOfMonth()==23 && today.getMonthValue()==2) {
+            OnlineShop.getCustomerList().stream().filter(a -> a.getGender()==Gender.male).forEach(a -> System.out.println(a.getFIO()+Holidays.February23.getTitle()));
+        } else {
+            System.out.println(Holidays.NONE.getTitle());
+        }
     }
 }
