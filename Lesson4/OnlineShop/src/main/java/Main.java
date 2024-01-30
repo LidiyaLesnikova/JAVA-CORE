@@ -9,8 +9,9 @@ public class Main {
     public static void main(String[] args) throws CustomerNotExistException, ProductNotExistException, QuantityException {
         System.out.println("online shop");
 
-        OnlineShop.getCustomerList().add(new Customer("Ivanov Ivan", LocalDate.of(1987, 12, 9), "+9867566473"));
-        OnlineShop.getCustomerList().add(new Customer("Petrov Petr", LocalDate.of(1988, 12, 20), "+9867566475"));
+        OnlineShop.getCustomerList().add(new Customer("Ivanov Ivan", LocalDate.of(1987, 12, 9), "+9867566473", Gender.male));
+        OnlineShop.getCustomerList().add(new Customer("Petrov Petr", LocalDate.of(1988, 12, 20), "+9867566475", Gender.male));
+        OnlineShop.getCustomerList().add(new Customer("Holodova Alina", LocalDate.of(2000, 1, 15), "+9867566499", Gender.female));
         OnlineShop.getProductList().add(new Product("apple", BigDecimal.valueOf(10L)));
         OnlineShop.getProductList().add(new Product("pineapple", BigDecimal.valueOf(50L)));
 
@@ -43,6 +44,4 @@ public class Main {
         System.out.println(OnlineShop.getOrderList().size() + " orders received");
 
     }
-
-
 }
