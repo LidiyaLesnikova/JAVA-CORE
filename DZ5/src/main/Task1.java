@@ -16,7 +16,7 @@ public class Task1 {
         System.out.println("all files have been backed up");
     }
 
-    public static void madeBackup() {
+    private static void madeBackup() {
         Path backupPath = Path.of("./backup");
         if (!Files.isDirectory(backupPath)) {
             try {
