@@ -9,8 +9,34 @@
 Записать в файл 9 значений так, чтобы они заняли три байта.
  */
 
+import java.io.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class Task2 {
     public static void main(String[] args) {
+        int[] arr = new int[] {0, 1, 2, 3, 2, 1, 0, 0, 1};
+        String fileName = "Tic-tac-toe1";
+        saveArray(arr, fileName);
+    }
 
+    private static void saveArray(int[] arr, String fileName) {
+        try (DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(fileName))) {
+            int count = 1;
+            int rez = 0;
+            for (int num : arr) {
+                rez += num;
+                if (count < 3) {
+                    rez = rez << 2;
+                    count++;
+                } else {
+                    outputStream.writeByte(rez);
+                    rez = 0;
+                    count = 1;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
